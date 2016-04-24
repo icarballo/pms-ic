@@ -1,0 +1,27 @@
+<form class="form-horizontal" role="form">
+
+    <!-- div control table tasks list -->
+    <div class="form-group">
+
+        <table class="table table-hover" style="width: 1750px">
+
+            <tr bgcolor="#E0E0E0">
+                <!-- <th style="width: 100px; vertical-align: middle">Project Id</th> -->
+                <!-- <th style="width: 100px; vertical-align: middle">Task Id</th> -->
+                <th style="width: 100px; vertical-align: middle">project_id</th>
+                <th style="width: 100px; vertical-align: middle">project_code</th>
+                <th style="width: 100px; vertical-align: middle">project_name</th>
+            </tr>
+
+            <tr ng-repeat="field in listCustomerProjects | filter:{$:filterSearchText} track by $index" ng-click="goProject(field.project_id)">
+                <!-- <td style="width: 100px; vertical-align: middle">{{field.project_id}}</td> -->
+                <!-- <td style="width: 100px; vertical-align: middle">{{field.project_task_id}}</td> -->
+                <td style="width: 100px; vertical-align: middle">{{field.project_id}}</td>
+                <td style="width: 100px; vertical-align: middle">{{field.project_code}}</td>
+                <td style="width: 100px; vertical-align: middle">{{field.project_name}}</td>
+            </tr>
+
+        </table>
+    </div>
+
+</form>

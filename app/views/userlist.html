@@ -1,0 +1,16 @@
+<input ng-model="busca">
+
+<div ng-repeat="field in data | filter:busca track by $index">
+    <a href='#/user/{{field.user_id}}'>
+        
+        <!--
+        {{field.user_id}}
+        {{field.user_name}}
+        {{field.user_surname}}
+        {{field.user_email}}
+        -->
+        
+        <user-list data=field></user-list>
+        
+    </a>
+</div>    

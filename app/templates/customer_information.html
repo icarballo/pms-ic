@@ -1,0 +1,133 @@
+<!-- <div ng-controller="customerController"> -->
+
+<form class="form-horizontal" role="form">
+
+    <div class="form-group" ng-hide="debugMode">
+        <label class="col-sm-2 col-md-2 control-label" for="businessUnitId">Business Unit Id</label>
+        <div class="col-sm-9 col-md-3">
+            <input type="text" class="form-control" id="businessUnitId" ng-model="data.business_unit_id" placeholder="Business Unit Id." disabled>
+        </div>
+        <label class="col-sm-2 col-md-2 control-label" for="selectBusinessUnitCode">Business Unit Code</label>
+        <div class="col-sm-9 col-md-3">
+            <select class="form-control" id="selectBusinessUnitCode" name="selectBusinessUnitName" ng-model="data.business_unit_id"
+                    ng-options="field.business_unit_id as field.business_unit_code for field in listBusinessUnit" >
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 col-md-2 control-label" for="selectBusinessUnitName">Business Unit Name</label>
+        <div class="col-sm-9 col-md-3">
+            <select class="form-control" id="selectBusinessUnitName" name="name_listBusinessUnit" ng-model="data.business_unit_id"
+                    ng-options="field.business_unit_id as field.business_unit_name for field in listBusinessUnit" >
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 col-md-2 control-label" for="phoenixCode">Phoenix Code</label>
+        <div class="col-sm-9 col-md-3">
+            <input type="text" class="form-control" id="phoenixCode" ng-model="data.phoenix_code" placeholder="Phoenix Code.">
+        </div>
+    </div>
+
+    <div class="form-group" ng-hide="debugMode">
+        <label class="col-sm-2 col-md-2 control-label" for="customerId">Customer Id</label>
+        <div class="col-sm-9 col-md-3">
+            <input type="text" class="form-control" id="customerId" ng-model="data.customer_id" placeholder="Customer Id." disabled>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 col-md-2 control-label" for="customerCode">Customer Code</label>
+        <div class="col-sm-9 col-md-3">
+            <input type="text" class="form-control" id="customerCode" ng-model="data.customer_code" placeholder="Customer Code">
+        </div>
+
+        <label class="col-sm-2 col-md-2 control-label" for="customerName">Customer Name</label>
+        <div class="col-sm-9 col-md-3">
+            <input type="text" class="form-control" id="customerName" ng-model="data.customer_name" placeholder="Customer Name">
+        </div>
+    </div>
+
+    <div class="form-group" ng-hide="debugMode">
+        <label class="col-sm-2 col-md-2 control-label" for="distributorId">Distributor Id</label>
+        <div class="col-sm-9 col-md-3">
+            <input type="text" class="form-control" id="distributorId" ng-model="data.distributor_id" placeholder="Distributor Id." disabled>
+        </div>
+        <label class="col-sm-2 col-md-2 control-label" for="selectDistributorCode">Distributor Code</label>
+        <div class="col-sm-9 col-md-3">
+            <select class="form-control" id="selectDistributorCode" name="selectDistributorName" ng-model="data.distributor_id"
+                    ng-options="field.distributor_id as field.distributor_code for field in listDistributor" >
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+
+
+        <label class="col-sm-2 col-md-2 control-label" for="selectDistributorName">Distributor Name</label>
+        <div class="col-sm-9 col-md-3">
+            <select class="form-control" id="selectDistributorName" name="name_listDistributor" ng-model="data.distributor_id"
+                    ng-options="field.distributor_id as field.distributor_name for field in listDistributor" >
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-hide="debugMode">
+        <label class="col-sm-2 col-md-2 control-label" for="resourceId">Resource Id</label>
+        <div class="col-sm-9 col-md-3">
+            <input type="text" class="form-control" id="resourceId" ng-model="data.resource_id" placeholder="Resource Id." disabled>
+        </div>
+        <label class="col-sm-2 col-md-2 control-label" for="selectResourceCode">Resource Code</label>
+        <div class="col-sm-9 col-md-3">
+            <select class="form-control" id="selectResourceCode" name="selectResourceName" ng-model="data.resource_id"
+                    ng-options="field.resource_id as field.resource_code for field in listCommercialResource" >
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+
+
+        <label class="col-sm-2 col-md-2 control-label" for="selectResourceName">Resource Name</label>
+        <div class="col-sm-9 col-md-3">
+            <select class="form-control" id="selectResourceName" name="name_listResource" ng-model="data.resource_id"
+                    ng-options="field.resource_id as field.resource_name for field in listCommercialResource" >
+            </select>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <!-- tag: div | function: manage application (new/insert/update/delete) actions -->
+    <div class="form-group">
+        <div class="col-sm-1 col-md-2 col-lg-5"></div>
+        <div class="col-sm-2 col-md-2 col-lg-7">
+            <button type="button" class="btn btn-default" ng-show ="showNew"    ng-click="newCustomerActionForm()">New</button>
+            <button type="button" class="btn btn-default" ng-show ="showSave"   ng-click="saveCustomerActionForm()">Save</button>
+            <button type="button" class="btn btn-default" ng-show ="showDelete" ng-click="deleteCustomerActionForm()">Delete</button>
+            <button type="button" class="btn btn-default" ng-show ="showCancel" ng-click="cancelCustomerActionForm()">Cancel</button>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <!-- tag: div | function: manage application aerts -->
+    <div class="form-group">
+        <div class="col-sm-1 col-md-2 col-lg-3">&nbsp;</div>
+        <div class="col-sm-2 col-md-2 col-lg-6">
+            <div ng-if="message" class="alert alert-success" role="alert">{{message}}</div>
+        </div>
+        <div class="col-sm-1 col-md-2 col-lg-3">&nbsp;</div>
+    </div>
+
+
+    <br>
+    {{data}}
+</form>
+
+<!-- </div> -->

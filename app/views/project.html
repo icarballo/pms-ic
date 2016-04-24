@@ -1,0 +1,322 @@
+<div ng-controller="projectController">
+    <!-- Control "nav-tab" visual definition-->
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="{{navTab[1]}}"><a ng-click="changeNavTab('1')">Information</a></li>
+        <li role="presentation" class="{{navTab[2]}}"><a ng-click="changeNavTab('2')">Gantt</a></li>
+        <li role="presentation" class="{{navTab[3]}}"><a ng-click="changeNavTab('3')">Tasks</a></li>
+        <li role="presentation" class="{{navTab[4]}}"><a ng-click="changeNavTab('4')">Privilege</a></li>
+    </ul>
+
+    <br>
+    <br>
+
+    <!-- "nav-tab" project definition -->
+    <form class="form-horizontal" role="form" ng-hide="!navTab[1]">
+
+        <div class="form-group" ng-hide="debugMode">
+            <label class="col-sm-2 col-md-2 control-label" for="projectId">Project Id</label>
+            <div class="col-sm-9 col-md-3">
+                <input type="text" class="form-control" id="projectId" ng-model="data.project_id" placeholder="Project Id." disabled>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 col-md-2 control-label" for="projectCode">Project Code</label>
+            <div class="col-sm-9 col-md-3">
+                <input type="text" class="form-control" id="projectCode" ng-model="data.project_code" placeholder="Project Code">
+            </div>
+
+            <label class="col-sm-2 col-md-2 control-label" for="projectName">Project Name</label>
+            <div class="col-sm-9 col-md-3">
+                <input type="text" class="form-control" id="projectName" ng-model="data.project_name" placeholder="Project Name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 col-md-2 control-label" for="projectDescription">Project Description</label>
+            <div class="col-sm-9 col-md-8">
+                <input type="text" class="form-control" id="projectDescription" ng-model="data.project_description" ng-init="data.project_description=''" placeholder="Project Description">
+            </div>
+        </div>
+
+        <div class="form-group" ng-hide="debugMode">
+            <label class="col-sm-2 col-md-2 control-label" for="customerId">Customer Id</label>
+            <div class="col-sm-9 col-md-3">
+                <input type="text" class="form-control" id="customerId" ng-model="data.customer_id" placeholder="Customer Id." disabled>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 col-md-2 control-label" for="selectCustomerCode">Customer Code</label>
+            <div class="col-sm-9 col-md-3">
+                <select class="form-control" id="selectCustomerCode" name="selectCustomerName" ng-model="data.customer_id"
+                        ng-options="field.customer_id as field.customer_code for field in listCustomers" >
+                </select>
+            </div>
+
+            <label class="col-sm-2 col-md-2 control-label" for="selectCustomerName">Customer Name</label>
+            <div class="col-sm-9 col-md-3">
+                <select class="form-control" id="selectCustomerName" name="name_listCustomers" ng-model="data.customer_id"
+                        ng-options="field.customer_id as field.customer_name for field in listCustomers" >
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-hide="debugMode">
+            <label class="col-sm-2 col-md-2 control-label" for="requestTypeIdId">Request Type Id</label>
+            <div class="col-sm-9 col-md-3">
+                <input type="text" class="form-control" id="requestTypeIdId" ng-model="data.request_type_id" placeholder="Request Type Id." disabled>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 col-md-2 control-label" for="selectRequestTypeCode">Request Type Code</label>
+            <div class="col-sm-9 col-md-3">
+                <select class="form-control" id="selectRequestTypeCode" name="selectRequestTypeName" ng-model="data.request_type_id"
+                        ng-options="field.request_type_id as field.request_type_code for field in listRequestTypes" >
+                </select>
+            </div>
+
+            <label class="col-sm-2 col-md-2 control-label" for="selectRequestTypeName">Request Type Name</label>
+            <div class="col-sm-9 col-md-3">
+                <select class="form-control" id="selectRequestTypeName" name="name_listRequestTypes" ng-model="data.request_type_id"
+                        ng-options="field.request_type_id as field.request_type_name for field in listRequestTypes" >
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-hide="debugMode">
+            <label class="col-sm-2 col-md-2 control-label" for="projectTypeId">Project Type Id</label>
+            <div class="col-sm-9 col-md-3">
+                <input type="text" class="form-control" id="projectTypeId" ng-model="data.project_type_id" placeholder="Project Type Id." disabled>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 col-md-2 control-label" for="selectProjectTypeCode">Project Type Code</label>
+            <div class="col-sm-9 col-md-3">
+                <select class="form-control" id="selectProjectTypeCode" name="selectProjectTypeName" ng-model="data.project_type_id"
+                        ng-options="field.project_type_id as field.project_type_code for field in listProjectTypes" >
+                </select>
+            </div>
+
+            <label class="col-sm-2 col-md-2 control-label" for="selectProjectTypeName">Project Type Name</label>
+            <div class="col-sm-9 col-md-3">
+                <select class="form-control" id="selectProjectTypeName" name="name_listProjectTypes" ng-model="data.project_type_id"
+                        ng-options="field.project_type_id as field.project_type_name for field in listProjectTypes" >
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-hide="debugMode">
+            <label class="col-sm-2 col-md-2 control-label" for="projectStatusId">Project Status Id</label>
+            <div class="col-sm-9 col-md-3">
+                <input type="text" class="form-control" id="projectStatusId" ng-model="data.project_status_id" placeholder="Project Status Id." disabled>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 col-md-2 control-label" for="selectProjectStatusCode">Project Status Code</label>
+            <div class="col-sm-9 col-md-3">
+                <select class="form-control" id="selectProjectStatusCode" name="selectProjectStatusName" ng-model="data.project_status_id"
+                        ng-options="field.project_status_id as field.project_status_code for field in listProjectStatus" >
+                </select>
+            </div>
+
+            <label class="col-sm-2 col-md-2 control-label" for="selectProjectStatusName">Project Status Name</label>
+            <div class="col-sm-9 col-md-3">
+                <select class="form-control" id="selectProjectStatusName" name="name_listProjectStatus" ng-model="data.project_status_id"
+                        ng-options="field.project_status_id as field.project_status_name for field in listProjectStatus" >
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" ng-hide="debugMode">
+            <label class="col-sm-2 col-md-2 control-label" for="projectPhaseId">Project Phase Id</label>
+            <div class="col-sm-9 col-md-3">
+                <input type="text" class="form-control" id="projectPhaseId" ng-model="data.project_phase_id" placeholder="Project Phase Id." disabled>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 col-md-2 control-label" for="selectProjectPhaseCode">Project Phase Code</label>
+            <div class="col-sm-9 col-md-3">
+                <select class="form-control" id="selectProjectPhaseCode" name="selectProjectPhaseName" ng-model="data.project_phase_id"
+                        ng-options="field.project_phase_id as field.project_phase_code for field in listProjectPhase" >
+                </select>
+            </div>
+
+            <label class="col-sm-2 col-md-2 control-label" for="selectProjectPhaseName">Project Phase Name</label>
+            <div class="col-sm-9 col-md-3">
+                <select class="form-control" id="selectProjectPhaseName" name="name_listProjectPhase" ng-model="data.project_phase_id"
+                        ng-options="field.project_phase_id as field.project_phase_name for field in listProjectPhase" >
+                </select>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <div class="form-group">
+            <div class="col-sm-1 col-md-2 col-lg-5"></div>
+            <div class="col-sm-2 col-md-2 col-lg-7">
+                <button type="button" class="btn btn-default" ng-click="newProject()">New</button>
+                <button type="button" class="btn btn-default" ng-click="saveProject()">Save</button>
+                <button type="button" class="btn btn-default" ng-click="deleteProject()">Delete</button>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div class="form-group">
+            <div class="col-sm-1 col-md-2 col-lg-3">&nbsp;</div>
+            <div class="col-sm-2 col-md-2 col-lg-6">
+                <div ng-if="message" class="alert alert-success" role="alert">{{message}}</div>
+            </div>
+            <div class="col-sm-1 col-md-2 col-lg-3">&nbsp;</div>
+        </div>
+    </form>
+
+    <!-- "nav-tab" gant task list -->
+    <form class="form-horizontal" role="form" ng-hide="!navTab[2]">
+        <div class="form-group">
+            <div class="col-sm-1 col-md-2 col-lg-5"></div>
+            <div class="col-sm-2 col-md-2 col-lg-7">
+                <button type="button" class="btn btn-default" ng-click="">New</button>
+                <button type="button" class="btn btn-default" ng-click="">Save</button>
+                <button type="button" class="btn btn-default" ng-click="">Delete</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- "nav-tab" project tasks list -->
+    <form class="form-horizontal" role="form" ng-hide="!navTab[3]">
+
+        <!-- div control task list -->
+        <div class="form-group" ng-hide="!navTask[1]">
+
+            <!-- div control "filterSearchText" in project tasks -->
+            <div class="form-group">
+                <label class="col-sm-1 col-md-1 control-label text-right">Filter : </label>
+                <div class="col-sm-2 col-md-2">
+                    <input type="text" class="form-control" id="filterSearchText" ng-model="filterSearchText" placeholder="Inser filter value">
+                </div>
+            </div>
+
+            <br>
+
+            <!-- div control table tasks list -->
+            <div class="form-group">
+
+                <table class="table table-hover" style="width: 1750px">
+
+                    <tr bgcolor="#E0E0E0">
+                        <!-- <th style="width: 100px; vertical-align: middle">Project Id</th> -->
+                        <!-- <th style="width: 100px; vertical-align: middle">Task Id</th> -->
+                        <th style="width: 100px; vertical-align: middle">Request</th>
+                        <th style="width: 100px; vertical-align: middle">Required</th>
+                        <!-- <th style="width: 100px; vertical-align: middle">Project Task Status Id</th> -->
+                        <th style="width: 100px; vertical-align: middle">Status Code</th>
+                        <!-- <th style="width: 100px; vertical-align: middle">Project Task Status Name</th> -->
+                        <th style="width: 100px; vertical-align: middle">Created By</th>
+                        <th style="width: 100px; vertical-align: middle">Assigned To</th>
+                        <!-- <th style="width: 100px; vertical-align: middle">Project Phase Id</th> -->
+                        <th style="width: 250px; vertical-align: middle">Phase Code</th>
+                        <!-- <th style="width: 100px; vertical-align: middle">Project Phase Name</th> -->
+                        <!-- <th style="width: 100px; vertical-align: middle">Project Task Severity Id</th> -->
+                        <th style="width: 100px; vertical-align: middle">Severity Code</th>
+                        <!-- <th style="width: 100px; vertical-align: middle">Project Task Severity Name</th> -->
+                        <!-- <th style="width: 100px; vertical-align: middle">Project Task Code</th> -->
+                        <!-- <th style="width: 100px; vertical-align: middle">Project Task Name</th> -->
+                        <th style="width: 400px; vertical-align: middle">Task ToDo</th>
+                        <th style="width: 400px; vertical-align: middle">Task Comment</th>
+                        <th style="width: 100px; vertical-align: middle">Review Date</th>
+                    </tr>
+
+                    <tr ng-repeat="field in listTasks | filter:{$:filterSearchText} track by $index" ng-click="editProjectTask(field.project_task_id)">
+                        <!-- <td style="width: 100px; vertical-align: middle">{{field.project_id}}</td> -->
+                        <!-- <td style="width: 100px; vertical-align: middle">{{field.project_task_id}}</td> -->
+                        <td style="width: 100px; vertical-align: middle">{{field.project_task_request_date}}</td>
+                        <td style="width: 100px; vertical-align: middle">{{field.project_task_required_date}}</td>
+                        <!-- <td style="width: 100px; vertical-align: middle">{{field.project_task_status_id}}</td> -->
+                        <td style="width: 100px; vertical-align: middle">{{field.project_task_status_code}}</td>
+                        <!-- <td style="width: 100px; vertical-align: middle">{{field.project_task_status_name}}</td> -->
+                        <td style="width: 100px; vertical-align: middle">{{field.project_task_created_by}}</td>
+                        <td style="width: 100px; vertical-align: middle">{{field.project_task_assigned_to}}</td>
+                        <!-- <td style="width: 100px; vertical-align: middle">{{field.project_phase_id}}</td> -->
+                        <td style="width: 250px; vertical-align: middle">{{field.project_phase_code}}</td>
+                        <!-- <td style="width: 100px; vertical-align: middle">{{field.project_phase_name}}</td> -->
+                        <!-- <td style="width: 100px; vertical-align: middle">{{field.project_task_severity_id}}</td> -->
+                        <td style="width: 100px; vertical-align: middle">{{field.project_task_severity_code}}</td>
+                        <!-- <td style="width: 100px; vertical-align: middle">{{field.project_task_severity_name}}</td> -->
+                        <!-- <td style="width: 100px; vertical-align: middle">{{field.project_task_code}}</td> -->
+                        <!-- <td style="width: 100px; vertical-align: middle">{{field.project_task_name}}</td> -->
+                        <td style="width: 400px; vertical-align: middle">{{field.project_task_todo}}</td>
+                        <td style="width: 400px; vertical-align: middle">{{field.project_task_comment}}</td>
+                        <td style="width: 100px; vertical-align: middle">{{field.project_task_review_date}}</td>
+                    </tr>
+
+                </table>
+            </div>
+
+            <!-- div control menú buttons -->
+            <div class="form-group">
+                <div class="col-sm-1 col-md-2 col-lg-5"></div>
+                <div class="col-sm-2 col-md-2 col-lg-7">
+                    <button type="button" class="btn btn-default" ng-click="changeNavTask('2')">New</button>
+                    <!-- <button type="button" class="btn btn-default" ng-click="">Save</button> -->
+                    <!-- <button type="button" class="btn btn-default" ng-click="">Delete</button> -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- div control task new / edit -->
+        <div class="form-group" ng-hide="!navTask[2]">
+
+
+            <div class="form-group">
+
+                <div class="form-group">
+                    <label class="col-sm-2 col-md-2 control-label" for="projectRequestDate">Request Date</label>
+                    <div class="col-sm-9 col-md-3">
+                        <input type="text" class="form-control" id="projectRequestDate" ng-model="dataTask.project_request_date" placeholder="Project Request Date" disabled>
+                    </div>
+
+                    <label class="col-sm-2 col-md-2 control-label" for="selectCustomerName">Customer Name</label>
+                    <div class="col-sm-9 col-md-3">
+                        <select class="form-control" id="selectCustomerName" name="name_listCustomers" ng-model="data.customer_id"
+                            ng-options="field.customer_id as field.customer_name for field in listCustomers" >
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- div control menú buttons -->
+            <div class="form-group">
+                <div class="col-sm-1 col-md-2 col-lg-5"></div>
+                <div class="col-sm-2 col-md-2 col-lg-7">
+                    <button type="button" class="btn btn-default" ng-click="changeNavTask('1')">Atras</button>
+                    <!-- <button type="button" class="btn btn-default" ng-click="">Save</button> -->
+                    <!-- <button type="button" class="btn btn-default" ng-click="">Delete</button> -->
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+
+    <form class="form-horizontal" role="form" ng-hide="!navTab[4]">
+        <div class="form-group">
+            <div class="col-sm-1 col-md-2 col-lg-5"></div>
+            <div class="col-sm-2 col-md-2 col-lg-7">
+                <button type="button" class="btn btn-default" ng-click="">New</button>
+                <button type="button" class="btn btn-default" ng-click="">Save</button>
+                <button type="button" class="btn btn-default" ng-click="">Delete</button>
+            </div>
+        </div>
+    </form>
+</div>

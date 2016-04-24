@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../dist/angular-1.4.4/angular.js"></script>
+    <!-- <script src="../dist/angular-1.4.4/angular-route.js"></script> -->
+    <script src="../dist/ui-router/angular-ui-router.js"></script>
+    <script src="../dist/ui-router-tabs/ui-router-tabs.js"></script>
+    <script src="../dist/ui-bootstrap/ui-bootstrap-tpls-0.13.4.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="controllers/users.js"></script>
+    <script src="controllers/projects.js"></script>
+    <script src="controllers/customers.js"></script>
+    <script src="services/customers_service.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../dist/bootstrap-3.3.5/css/bootstrap.min.css">
+    <link src="../dist/ui-bootstrap-0.13.3/ui-bootstrap-tpls-0.13.3.min.js">
+    <link rel="stylesheet" type="text/css" href="../css/custom.css">
+    <link src="../dist/ng-tasty-0.5.8/ng-tasty-tpls.min.js">
+
+</head>
+<body>
+    
+    <div ng-app="myApp" ng-controller="mainController">
+
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Dashboard <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#/customers"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Customers</a></li>
+                        <li><a href="#/projects"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Projects</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>debug: <input type="checkbox" ng-model="debugMode"></li>
+                        <li><a href="#">Maintenance</a></li>
+                        <li><a href="#">Sign In</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+
+        <div style = "margin-left:30px">
+            <!--<div ng-view></div>-->
+            <div ui-view></div>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

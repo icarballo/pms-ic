@@ -1,0 +1,64 @@
+<div ng-controller="customerController">
+
+    <h3>Customer list</h3>
+
+    <br>
+    <br>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="col-sm-1 col-md-1 control-label text-right">Filter : </label>
+            <div class="col-sm-2 col-md-2">
+                <input type="text" class="form-control" id="projectId" ng-model="busca" placeholder="Inser filter value">
+            </div>
+        </div>
+    </form>
+
+    <br>
+    <br>
+
+
+        <!-- cabecera lista de proyectos -->
+        <table class="table table-hover" style="width: 1075px">
+
+            <!--<table id="table-default">-->
+            <tr bgcolor="#E0E0E0">
+                <th style="width: 100px">Customer Id</th>
+                <th style="width: 100px">Business Unit Id</th>
+                <th style="width: 150px">Distributor Code</th>
+                <!--<th style="width: 200px">Distributor Name</th>-->
+                <th style="width: 200px">Customer Code</th>
+                <th style="width: 325px">Customer Name</th>
+                <th style="width: 200px">Commercial Name</th>
+            </tr>
+
+
+            <tr ng-repeat="field in data | filter:{$:busca} track by $index" ng-click="goCustomerActionForm(field.customer_id)">
+                <!-- registros de la lista de proyectos -->
+                <!-- <a href='#/projects/{{field.project_id}}'> -->
+                <!--<tr>
+                    <td>{{field.project_id}}</td>
+                    <td>{{field.project_code}}</td>
+                    <td>{{field.project_name}}</td>
+                </tr>-->
+
+                <!-- {{field.user_id}},{{field.user_name}},{{field.user_surname}},{{field.user_email}} -->
+
+                <td style="width: 100px">{{field.customer_id}}</td>
+                <td style="width: 100px">{{field.business_unit_code}}</td>
+                <td style="width: 150px">{{field.distributor_code}}</td>
+                <!--<td style="width: 200px">{{field.distributor_name}}</td>-->
+                <td style="width: 200px">{{field.customer_code}}</td>
+                <td style="width: 325px">{{field.customer_name}}</td>
+                <td style="width: 200px">{{field.resource_name}}</td>
+                <!--<project-list data=field></project-list>-->
+
+                <!-- </a> -->
+            </tr>
+        </table>
+
+    <br>
+
+    <button type="button" class="btn btn-default" ng-show ="showNew" ng-click="newCustomerActionForm()">New Customer</button>
+
+
+</div>

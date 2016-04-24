@@ -1,0 +1,68 @@
+<div ng-controller="projectController">
+    <h3>Project list</h3>
+
+    <br>
+    <br>
+    <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+
+            <label class="col-sm-1 col-md-1 control-label text-right">Filter : </label>
+            <div class="col-sm-2 col-md-2">
+                <input type="text" class="form-control" id="projectId" ng-model="filterSearchText" placeholder="Inser filter value">
+            </div>
+
+            <label class="col-sm-2 col-md-2 control-label">Project Status Name</label>
+            <div class="col-sm-2 col-md-2">
+                <select class="form-control" id="selectProjectStatusName" name="name_listProjectStatus" ng-model="filterProjectStatus"
+                        ng-options="field.project_status_id as field.project_status_name for field in listProjectStatus" >
+                </select>
+            </div>
+
+        </div>
+
+    </form>
+
+    <br>
+    <br>
+
+    <!-- cabecera lista de proyectos -->
+    <table class="table table-hover" style="width: 1575px">
+
+        <tr bgcolor="#E0E0E0">
+            <th style="width: 100px; vertical-align: middle">Business Unit Code</th>
+            <th style="width: 150px; vertical-align: middle">Project Code</th>
+            <th style="width: 200px; vertical-align: middle">Customer Code</th>
+            <!--<th style="width: 325px">Customer Name</th>-->
+            <th style="width: 175px; vertical-align: middle">Request Type Name</th>
+            <th style="width: 250px; vertical-align: middle">Project Type Name</th>
+            <th style="width: 250px; vertical-align: middle">Project Name</th>
+            <th style="width: 250px; vertical-align: middle">Project Phase Name</th>
+            <th style="width: 200px; vertical-align: middle">Project Status Name</th>
+        </tr>
+
+        <tr ng-repeat="field in data | filter:{$:filterSearchText, project_status_id:filterProjectStatus} track by $index" ng-click="goProject(field.project_id)">
+
+            <td style="width: 100px; vertical-align: middle">{{field.business_unit_code}}</td>
+            <td style="width: 150px; vertical-align: middle">{{field.project_code}}</td>
+            <td style="width: 200px; vertical-align: middle">{{field.customer_code}}</td>
+            <!--<td style="width: 325px">{{field.customer_name}}</td> --> <!-- ng-click="go('/home')" -->
+            <td style="width: 175px; vertical-align: middle">{{field.request_type_name}}</td>
+            <td style="width: 250px; vertical-align: middle">{{field.project_type_name}}</td>
+            <td style="width: 250px; vertical-align: middle">{{field.project_name}}</td>
+            <td style="width: 250px; vertical-align: middle">{{field.project_phase_name}}</td>
+            <td style="width: 200px; vertical-align: middle">{{field.project_status_name}}</td>
+
+        </tr>
+
+    </table>
+
+    <br>
+
+    <button type="button" class="btn btn-default" ng-click="newProject()">New Project</button>
+
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
